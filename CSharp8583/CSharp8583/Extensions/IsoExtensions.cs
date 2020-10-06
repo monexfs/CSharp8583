@@ -218,7 +218,7 @@ namespace CSharp8583.Extensions
                         }
                         else if (isoFieldProperties.LenDataType == DataType.BCD)
                         {
-                            var valueLen = fieldValue?.Length.ToString().ConvertToBinaryCodedDecimal(false);
+                            var valueLen = fieldValue?.Length.ToString().ConvertToBinaryCodedDecimal(false, isoFieldProperties.LengthType.ToBytePackCount());
                             fieldBytes.AddRange(valueLen);
                         }
                         break;

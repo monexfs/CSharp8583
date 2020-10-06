@@ -1,12 +1,14 @@
 ﻿using CSharp8583.Attributes;
 using System;
 using System.Reflection;
+using CSharp8583.Common;
+
 namespace CSharp8583.Extensions
 {
     /// <summary>
     /// Contains Enum Extensions
     /// </summary>
-    internal static class EnumExtensions
+    public static class EnumExtensions
     {
         /// <summary>
         /// Get Iso Value of Enum
@@ -52,6 +54,26 @@ namespace CSharp8583.Extensions
             }
 
             throw new ArgumentException($"Type {enumType.Name} does not contain a EnumIsoValueAttribute", "EnumIsoValueAttribute");
+        }
+
+        /// <summary>
+        /// retrieve byte count for BCD packing purposes
+        /// </summary>
+        /// <param name="lengthType">length type</param>
+        /// <returns></returns>
+        public static int ToBytePackCount(this LengthType lengthType)
+        {
+            switch (lengthType)
+            {
+                case LengthType.LVAR:
+                case LengthType.LLVAR:
+                    return 1;
+                case LengthType.LLLVAR:
+                case LengthType.LLLLVAR:
+                    return 2;
+                default:
+                    return 0;
+            }
         }
     }
 }
