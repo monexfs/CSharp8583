@@ -8,7 +8,7 @@ namespace CSharp8583.Extensions
     /// <summary>
     /// Contains Enum Extensions
     /// </summary>
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
         /// <summary>
         /// Get Iso Value of Enum
